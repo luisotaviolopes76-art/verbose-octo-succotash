@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vagas de Emprego Disponíveis</title>
+<style>
+body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 10px; }
+h1 { text-align: center; }
+form, .jobs-list, .edit-panel { border: 1px solid #ccc; border-radius: 8px; padding: 12px; margin-bottom: 20px; background: #fafafa; }
+label { display: block; margin: 8px 0 4px; }
+input, select, button { padding: 8px; border-radius: 6px; border: 1px solid #ccc; width: 100%; margin-bottom: 8px; }
+button { cursor: pointer; }
+.job-item { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.edit-panel { display: none; }
+</style>
+</head>
+<body>
+<h1>Vagas de Emprego</h1><form id="mainForm">
+<label for="name">Nome completo</label>
+<input id="name" type="text" required placeholder="Seu nome">
+<label for="dob">Data de nascimento</label>
+<input id="dob" type="date" required>
+<label for="jobSelect">Vaga disponível</label>
+<select id="jobSelect" required></select>
+<button type="submit">Enviar inscrição</button>
+<p id="msg"></p>
+</form><div class="jobs-list" id="jobsDisplay"></div><div class="edit-panel" id="editPanel">
+<h3>Editar vagas e salários</h3>
+<div id="jobsEditor"></div>
+<input id="newJobTitle" placeholder="Título da vaga">
+<input id="newJobPay" placeholder="Salário">
+<button id="addJobBtn">Adicionar vaga</button>
+</div>
+<button id="toggleEdit">Modo Edição</button>
+<button id="exportBtn">Exportar inscrições (CSV)</button><script>
+(function(){
+const DEFAULT_JOBS = [
+  {title: "Atendente de Loja", pay: "R$1.500 - R$2.000"},
+  {title: "Auxiliar de Cozinha", pay: "R$1.300 - R$1.800"},
+  {title: "Entregador (motoboy)", pay: "R$1.800 - R$3.500"},
+ 
